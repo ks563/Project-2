@@ -15,7 +15,7 @@ module.exports = function(app) {
     
   });
   app.get("/event/create/:id", function(req, res) {
-
+    res.render("eventCreation")
   });
 
   // Render 404 page for any unmatched routes

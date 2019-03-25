@@ -1,0 +1,44 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h2>Event Creation Page</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="example-text">Search</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>Results</h3>
+        <ul id="example-list" class="list-group">
+          {{#each images}}
+          <img class="result-image" scr="{{this.src}}">
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-selection" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div id = "modal-name" class="modal-body">
+        </div>
+        <img class = "rounded d-block" id = "modal-image" src = "" height="255" width="255">
+         <form class="clearfix mb-4">
+          <div class="form-group">
+            <label for="modal-text">Description</label>
+            <input type="text" id="modal-text" class="form-control" aria-describedby="modal-text" placeholder="Enter a Description">
+          </div>
+          <button id="modal-submit" class="btn btn-primary">Add to list</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+<script src="/js/index.js"></script>
