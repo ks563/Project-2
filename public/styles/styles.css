@@ -1,3 +1,7 @@
 .list-group-item {
   line-height: 2.5;
 }
+.result-image{
+  height: 255px;
+  width: 255px;
+}
