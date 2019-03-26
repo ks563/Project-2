@@ -1,11 +1,10 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $itemName = $("#party-item");
+var $itemDescription = $("#item-descrip");
+var $itemSubmitBtn = $("#item-submit");
+var $itemArea = $("#item-area");
 var $resultImg = $(".result-image");
-var $modal = $("#modal-selection");
-var $modalBtn = $("#modal-submit");
+
 // var customSearch = require("./custom-search");
 
 // The API object contains methods for each kind of request we'll make
@@ -35,7 +34,7 @@ var API = {
   // },
   customSearch: function(searchTerm){
     return $.ajax({
-      url: "/api/" + searchTerm,
+      url: "/api/search/" + searchTerm,
       type: "GET"
     })
   }
@@ -74,17 +73,16 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-  // customSearch("chips");
-  var example = {
-    search: $exampleText.val().trim(),
+  var item = {
+    search: $itemName.val().trim(),
   };
 
-  if (!(example.search)) {
+  if (!(item.search)) {
     alert("You must enter an example text and description!");
     return;
   }
 
-  API.customSearch(example.search).then(function(data){
+  API.customSearch(item.search).then(function(data){
     console.log(data);
     
     for (var i = 1; i < data.length; i++)
@@ -92,13 +90,13 @@ var handleFormSubmit = function(event) {
       var image = $("<img>");
       image.addClass("result-image");
       image.attr("src", data[i].pagemap.cse_thumbnail[0].src);
-      $exampleList.append(image);
+      $itemArea.append(image);
     }
   });
 
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  // $exampleText.val("");
+  // $exampleDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -113,12 +111,9 @@ var handleDeleteBtnClick = function() {
   });
 };
 var handleSelection = function(){
-  $("#modal-image").attr("src", $(this).attr("src"));
-  $modal.modal("toggle");
   API.saveExample()
 }
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$itemSubmitBtn.on("click", handleFormSubmit);
+// $exampleList.on("click", ".delete", handleDeleteBtnClick);
 $(document).on("click",".result-image", handleSelection);
-$($modalBtn).on("click", saveExample);
