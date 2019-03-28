@@ -5,24 +5,23 @@ var path = require("path");
 module.exports = function(app) {
   // Load index page
   app.get("/home", authorizeUser, function(req, res) {
-    console.log(req.user)
+    res.sendFile(path.join(__dirname, "../views/html/eventCreation.html"));
 
-    res.sendFile(path.join(__dirname, "../public/html/eventCreation.html"));
+    console.log(req.user)
   });
   app.get("/login", function(req, res) {
-    console.log(req.user)
-    res.sendFile(path.join(__dirname, "../public/html/login.html"));
+    res.sendFile(path.join(__dirname, "../views/html/login.html"));
     
   });
   app.get("/register", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/register.html"));
+    res.sendFile(path.join(__dirname, "../views/html/register.html"));
   });
 
   app.get("/event/:id",authorizeUser, function(req, res) {
 
   });
   app.get("/event/create/:id",authorizeUser, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/additems.html"));
+    res.sendFile(path.join(__dirname, "../views/html/additems.html"));
   });
 
   // Render 404 page for any unmatched routes
