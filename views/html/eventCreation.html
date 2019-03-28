@@ -48,15 +48,15 @@
             <form action="/api/event/create" method="POST" role="form">
               <div class="form-group">
                 <label for="party-name">Event Name</label>
-                <input name=name type="text" class="form-control" id="party-name">
+                <input name=name type="text" class="form-control" id="party-name" required>
               </div>
               <div class="form-group">
                 <label for="party-time">Date and Time</label>
-                <input name=dateTime type="text" class="form-control" id="party-time">
+                <input name=dateTime type="text" class="form-control" id="party-time" required>
               </div>
               <div class="form-group">
                 <label for="party-email">Phone Number</label>
-                <input name=phoneNumber type="text" class="form-control" id="party-email">
+                <input name=phoneNumber type="text" class="form-control" id="party-email" required>
               </div>
               <button id="event-submit" type="submit" class="btn btn-primary submit">Submit</button>
             </form>
