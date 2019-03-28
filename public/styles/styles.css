@@ -10,6 +10,7 @@ body{
   color: #f2e0c9;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 3em;
+  opacity: .75;
 }
 
 .bg-jumbo{
