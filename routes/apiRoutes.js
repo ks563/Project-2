@@ -17,7 +17,7 @@ module.exports = function(app) {
     })
   });
   //create new event
-  app.post("/api/event/",authorizeUser, function(req, res) {
+  app.post("/api/event/create",authorizeUser, function(req, res) {
     
    
   });
