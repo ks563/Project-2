@@ -40,6 +40,14 @@ var API = {
   }
 };
 
+// $("#logout").on("click", function(event) {
+//   event.preventDefault();
+
+//   console.log("hello");
+
+//   location.replace("login.html");
+// })
+
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {

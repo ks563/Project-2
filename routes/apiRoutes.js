@@ -16,6 +16,14 @@ module.exports = function(app) {
       console.log(err)
     })
   });
+
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect("login");
+
+  });
+
+
   //create new event
   app.post("/api/event/create",authorizeUser, function(req, res) {
     var userId = req.user.id;
@@ -67,6 +75,7 @@ module.exports = function(app) {
       failureRedirect: "/login",
     })
   );
+  
   // // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
     
