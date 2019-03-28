@@ -18,8 +18,7 @@ module.exports = function(app) {
   });
   //create new event
   app.post("/api/event/create",authorizeUser, function(req, res) {
-    
-   
+   db.User.findOne(req.User)
   });
   // Create a new list item
   app.post("/api/event/:id", authorizeUser,function(req, res) {
@@ -39,7 +38,7 @@ module.exports = function(app) {
       }).then(function(user){
         if (user)
         {
-          res.redirect("/html/register.html")
+          res.redirect("/register")
         }
         else
         {
@@ -48,14 +47,14 @@ module.exports = function(app) {
             email: req.body.email,
             password: hashedPW
         })
-        res.redirect("/html/login.html")
+        res.redirect("/login")
       }
     })
   });
        
   app.post("/api/login", passport.authenticate('local', {
-      successRedirect: "/html/eventCreation.html",
-      failureRedirect:  "/html/login.html",
+      successRedirect: "/home",
+      failureRedirect: "/login",
     })
   );
   // // Delete an example by id

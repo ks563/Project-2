@@ -4,8 +4,8 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false
       },
-      email: {
-        type: DataTypes.STRING,
+      phoneNumber: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
       name: {
