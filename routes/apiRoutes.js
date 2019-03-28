@@ -18,7 +18,17 @@ module.exports = function(app) {
   });
   //create new event
   app.post("/api/event/create",authorizeUser, function(req, res) {
-   db.User.findOne(req.User)
+    var userId = req.user.id;
+   db.User.findByPk(userId).then(function(user){
+     if (user)
+     {
+       user.createEvent({
+         name: req.body.name,
+         dateTime: req.body.dateTime,
+         phoneNumber: req.body.phoneNumber
+       })
+     }
+   })
   });
   // Create a new list item
   app.post("/api/event/:id", authorizeUser,function(req, res) {
