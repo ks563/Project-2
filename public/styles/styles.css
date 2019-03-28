@@ -1,6 +1,7 @@
 body{
   font-family: 'Open Sans', sans-serif;
   background-color: #404040;
+  color: #f2f2f2;
 }
 
 .jumbotron{
@@ -11,9 +12,17 @@ body{
   font-size: 3em;
 }
 
+.bg-jumbo{
+  background-image: url("./images/loginbg.png");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .btn{
   background-color: #969696;
-  color: white;
+  color: #f2f2f2;
   border-color: #969696;
 }
 
