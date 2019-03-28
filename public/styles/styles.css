@@ -23,3 +23,8 @@ body{
   color: #f2f2f2;
 }
 
+.out {
+  /* float: right;
+  position: relative; */
+  rigth: 0
+}
