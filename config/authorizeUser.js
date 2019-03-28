@@ -5,7 +5,7 @@ function authorzieUser(req,res,next){
     }
     else
     {
-        res.redirect("/login");
+        res.redirect("../public/html/login.html");
     }
 
 }

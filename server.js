@@ -11,7 +11,6 @@ var router = express.Router();
 var PORT = process.env.PORT || 3000;
 require("./config/passport")(passport);
 
-
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -31,8 +30,8 @@ app.engine(
     defaultLayout: "main"
   })
 );
-
 app.set("view engine", "handlebars");
+
 app.use("/", router);
 
 var syncOptions = { force: false };

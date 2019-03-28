@@ -4,6 +4,7 @@ var passport = require("passport");
 var bcrypt = require("bcrypt");
 var authorizeUser = require("../config/authorizeUser");
 var Op = db.Sequelize.Op
+var path = require("path");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/search/:search",authorizeUser, function(req, res) {
@@ -16,7 +17,7 @@ module.exports = function(app) {
     })
   });
   //create new event
-  app.post("/api/event/",authorizeUser, function(req, res) {
+  app.post("/api/event/create",authorizeUser, function(req, res) {
     
    
   });
@@ -38,7 +39,7 @@ module.exports = function(app) {
       }).then(function(user){
         if (user)
         {
-          res.redirect("/register")
+          res.redirect("/html/register.html")
         }
         else
         {
@@ -47,14 +48,14 @@ module.exports = function(app) {
             email: req.body.email,
             password: hashedPW
         })
-        res.redirect("/login")
+        res.redirect("/html/login.html")
       }
     })
   });
        
   app.post("/api/login", passport.authenticate('local', {
-      successRedirect: '/home',
-      failureRedirect: '/login',
+      successRedirect: "/html/eventCreation.html",
+      failureRedirect:  "/html/login.html",
     })
   );
   // // Delete an example by id

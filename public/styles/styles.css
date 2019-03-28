@@ -1,5 +1,6 @@
 body{
   font-family: 'Open Sans', sans-serif;
+  background-color: #404040;
 }
 
 .jumbotron{
@@ -23,3 +24,6 @@ body{
   color: #f2f2f2;
 }
 
+.register-card{
+  background-color: #7b7b7b;
+}
