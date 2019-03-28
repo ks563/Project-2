@@ -5,11 +5,12 @@ var path = require("path");
 module.exports = function(app) {
   // Load index page
   app.get("/home", authorizeUser, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/eventCreation.html"));
-
     console.log(req.user)
+
+    res.sendFile(path.join(__dirname, "../public/html/eventCreation.html"));
   });
   app.get("/login", function(req, res) {
+    console.log(req.user)
     res.sendFile(path.join(__dirname, "../public/html/login.html"));
     
   });

@@ -1,15 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
     var Event = sequelize.define("Event", {
-      dateOf: {
+      dateTime: {
           type: DataTypes.STRING,
           allowNull: false
       },
-      location: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false
     },
-      description: {
-          type: DataTypes.TEXT
+      name: {
+          type: DataTypes.STRING,
+          allowNull:false
         }
     });
     Event.associate = function(models){
