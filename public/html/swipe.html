@@ -52,8 +52,9 @@
     <script type="text/javascript" src="">
         for (var i = 0; i < 10; i++) {
             var imgSrc;
+            var description;
             var itemDiv = $("<div>");
-            var itemDesc = $("<p>").text();
+            var itemDesc = $("<p>").text(description);
             var itemImg = $("<img>");
             itemImg.attr("src", imgSrc);
         };
