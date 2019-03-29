@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "ferhat5020",
     "database": "PartyTdb",
     "host": "127.0.0.1",
     "dialect": "mysql"
