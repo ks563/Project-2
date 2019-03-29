@@ -47,13 +47,6 @@ var API = {
   }
 };
 
-// $("#logout").on("click", function(event) {
-//   event.preventDefault();
-
-//   console.log("hello");
-
-//   location.replace("login.html");
-// })
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
@@ -92,13 +85,14 @@ var handleFormSubmit = function(event) {
     search: $itemName.val().trim(),
   };
 
-  if (!(item.search)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!(item.search)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
 
   API.customSearch(item.search).then(function(data){
     console.log(data);
+    $("#item-area").empty();
     
     for (var i = 1; i < data.length; i++)
     {
@@ -139,4 +133,4 @@ var handleSelection = function(){
 // Add event listeners to the submit and delete buttons
 $itemSubmitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
-$(document).on("click",".result-image", handleSelection);
+$(document).on("submit",".result-image", handleSelection);
