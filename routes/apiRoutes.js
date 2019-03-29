@@ -34,7 +34,10 @@ module.exports = function(app) {
          name: req.body.name,
          dateTime: req.body.dateTime,
          phoneNumber: req.body.phoneNumber
+       }).then(function(event){
+         res.redirect("/event/create/" + event.dataValues.id)
        })
+
      }
    })
   });
@@ -65,7 +68,7 @@ module.exports = function(app) {
             email: req.body.email,
             password: hashedPW
         })
-        res.redirect("/login")
+          res.redirect("/login")
       }
     })
   });

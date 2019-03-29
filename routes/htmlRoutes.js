@@ -27,6 +27,8 @@ module.exports = function(app) {
 
   });
   app.get("/event/create/:id",authorizeUser, function(req, res) {
+    eventId = req.params.id;
+    console.log(eventId);
     res.sendFile(path.join(__dirname, "../views/html/additems.html"));
   });
 
