@@ -37,6 +37,13 @@ var API = {
       url: "/api/search/" + searchTerm,
       type: "GET"
     })
+  },
+  saveSelection: function(data){
+    return $.ajax({
+      url: "/api/event/add",
+      type: "POST",
+      data: data
+    })
   }
 };
 
@@ -119,7 +126,15 @@ var handleDeleteBtnClick = function() {
   });
 };
 var handleSelection = function(){
-  API.saveExample()
+  var imglink = $(this).attr("src");
+  var name = $("#party-item").val().trim();
+  var description = $("#item-descrip").val().trim();
+  var data = {
+    item: name,
+    image_link: imglink,
+    description: description
+  }
+  API.saveSelection(data);
 }
 // Add event listeners to the submit and delete buttons
 $itemSubmitBtn.on("click", handleFormSubmit);

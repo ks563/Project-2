@@ -23,12 +23,12 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../views/html/register.html"));
   });
 
-  app.get("/event/:id",authorizeUser, function(req, res) {
+  app.get("/event/:id", authorizeUser, function(req, res) {
 
   });
-  app.get("/event/create/:id",authorizeUser, function(req, res) {
-    eventId = req.params.id;
-    console.log(eventId);
+  app.get("/event/create/:id", authorizeUser, function(req, res) {
+    var eventId = req.params.id;
+    req.body.eventId = eventId;
     res.sendFile(path.join(__dirname, "../views/html/additems.html"));
   });
 

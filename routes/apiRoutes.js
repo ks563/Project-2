@@ -42,7 +42,20 @@ module.exports = function(app) {
    })
   });
   // Create a new list item
-  app.post("/api/event/:id", authorizeUser,function(req, res) {
+  app.post("/api/event/add", authorizeUser,function(req, res) {
+    var userId = req.user.id;
+    console.log("user Id:" + userId);
+    db.User.findByPk(userId).then(function(user){
+      console.log(user);
+      if (user)
+      {
+        user.createItem({
+          image_link: req.body.image_link,
+          item: req.body.item,
+          description: req.body.description
+        })
+      }
+    })
   });
 
   app.post("/api/register", function(req,res){
