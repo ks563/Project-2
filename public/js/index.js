@@ -4,6 +4,7 @@ var $itemDescription = $("#item-descrip");
 var $itemSubmitBtn = $("#item-submit");
 var $itemArea = $("#item-area");
 var $resultImg = $(".result-image");
+var $eventId = $("#event").attr("data-id");
 
 // var customSearch = require("./custom-search");
 
@@ -124,6 +125,7 @@ var handleSelection = function(){
   var name = $("#party-item").val().trim();
   var description = $("#item-descrip").val().trim();
   var data = {
+    event_id: $eventId,
     item: name,
     image_link: imglink,
     description: description
@@ -133,4 +135,4 @@ var handleSelection = function(){
 // Add event listeners to the submit and delete buttons
 $itemSubmitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
-$(document).on("submit",".result-image", handleSelection);
+$(document).on("click",".result-image", handleSelection);

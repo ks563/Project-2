@@ -14,8 +14,8 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     Event.associate = function(models){
-        Event.belongsTo(models.User)
-      
+        Event.belongsTo(models.User);
+        Event.hasMany(models.Item);
     }
-    return Event
+    return Event;
   };

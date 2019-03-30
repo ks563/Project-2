@@ -43,12 +43,13 @@ module.exports = function(app) {
   });
   // Create a new list item
   app.post("/api/event/add", authorizeUser,function(req, res) {
-    var userId = req.user.id;
-    db.User.findByPk(userId).then(function(user){
-      console.log(user);
-      if (user)
+    var eventId = req.body.event_id;
+    console.log(eventId);
+    db.Event.findByPk(eventId).then(function(event){
+      console.log(event);
+      if (event)
       {
-        user.createItem({
+        event.createItem({
           image_link: req.body.image_link,
           item: req.body.item,
           description: req.body.description

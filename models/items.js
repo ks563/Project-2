@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Items = sequelize.define("Items", {
+    var Item = sequelize.define("Item", {
       item: {
           type: DataTypes.STRING
       },
@@ -15,9 +15,9 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.TEXT
         }
     });
-    Items.associate = function(models){
-        Items.belongsTo(models.User);
+    Item.associate = function(models){
+    Item.belongsTo(models.Event);
     }
-    return Items
+    return Item
   };
   
