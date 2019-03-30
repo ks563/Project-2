@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
     <!--bootstrap and jquery links-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -40,7 +40,7 @@
         <div class="row" id="test">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <div class="card">
+                <div class="item card">
                     <div class="card-header text-center" >
                         <p id="text">Swipe right on the items you want to bring!</p>
                     </div>
@@ -56,27 +56,36 @@
     </div>
 
     <script src="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 
     <script type="text/javascript">
 
-        for (var i = 0; i < 10; i++) {
-            var imgSrc;
-            var itemDiv = $("<div>");
-            var itemDesc = $("<p>").text();
-            var itemImg = $("<img>");
-            itemImg.attr("src", imgSrc);
-        };
-        itemDiv.prepend(itemImg);
-        itemDiv.prepend(itemDesc);
-        $("item-here").prepend(itemDiv);
+        // for (var i = 0; i < 10; i++) {
+        //     var imgSrc;
+        //     var itemDiv = $("<div>");
+        //     var itemDesc = $("<p>").text();
+        //     var itemImg = $("<img>");
+        //     itemImg.attr("src", imgSrc);
+        // };
+        // itemDiv.prepend(itemImg);
+        // itemDiv.prepend(itemDesc);
+        // $("item-here").prepend(itemDiv);
 
-        $("#test").on("swipeleft", function() {
-            console.log("swipe left");
-        });
+        // $("#test").on("swipeleft", function() {
+        //     console.log("swipe left");
+        // });
 
-        $("#test").on("swipe", function() {
-            console.log("swipe right");
-        });
+        // $("#test").on("swipe", function() {
+        //     console.log("swipe right");
+        // });
+    var $card = document.querySelector(".item");
+    var item = new Hammer($card)
+    item.on("swipeleft",function(){
+        $card.classList.add("animated", "slideOutLeft")
+    })
+    item.on("swiperight",function(){
+        $card.classList.add("animated", "slideOutRight")
+    })
 
 
     </script>

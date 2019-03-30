@@ -22,7 +22,9 @@ module.exports = function(app) {
   app.get("/register", function(req, res) {
     res.sendFile(path.join(__dirname, "../views/html/register.html"));
   });
-
+  app.get("/swipe", function(req, res) {
+    res.sendFile(path.join(__dirname, "../views/html/swipe.html"));
+  });
   app.get("/event/:id", authorizeUser, function(req, res) {
 
   });
