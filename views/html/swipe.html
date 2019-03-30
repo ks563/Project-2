@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
     <!--bootstrap and jquery links-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -24,6 +24,9 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
+    <!-- Zingtouch.js -->
+    <!-- <script src='./path/to/zingtouch.min.js'></script> -->
+
 </head>
 
 <body>
@@ -34,12 +37,12 @@
                 <h2 class="text-center">What are you bringing?</h2>
         </div>
 
-        <div class="row">
+        <div class="row" id="test">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <p>Swipe right on the items you want to bring!</p>
+                <div class="item card">
+                    <div class="card-header text-center" >
+                        <p id="text">Swipe right on the items you want to bring!</p>
                     </div>
                 </div>
             </div>
@@ -51,17 +54,40 @@
         </div>
 
     </div>
-    <script type="text/javascript" src="">
-        for (var i = 0; i < 10; i++) {
-            var imgSrc;
-            var itemDiv = $("<div>");
-            var itemDesc = $("<p>").text();
-            var itemImg = $("<img>");
-            itemImg.attr("src", imgSrc);
-        };
-        itemDiv.prepend(itemImg);
-        itemDiv.prepend(itemDesc);
-        $("item-here").prepend(itemDiv);
+
+    <script src="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+
+    <script type="text/javascript">
+
+        // for (var i = 0; i < 10; i++) {
+        //     var imgSrc;
+        //     var itemDiv = $("<div>");
+        //     var itemDesc = $("<p>").text();
+        //     var itemImg = $("<img>");
+        //     itemImg.attr("src", imgSrc);
+        // };
+        // itemDiv.prepend(itemImg);
+        // itemDiv.prepend(itemDesc);
+        // $("item-here").prepend(itemDiv);
+
+        // $("#test").on("swipeleft", function() {
+        //     console.log("swipe left");
+        // });
+
+        // $("#test").on("swipe", function() {
+        //     console.log("swipe right");
+        // });
+    var $card = document.querySelector(".item");
+    var item = new Hammer($card)
+    item.on("swipeleft",function(){
+        $card.classList.add("animated", "slideOutLeft")
+    })
+    item.on("swiperight",function(){
+        $card.classList.add("animated", "slideOutRight")
+    })
+
+
     </script>
 </body>
 

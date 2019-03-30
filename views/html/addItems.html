@@ -37,14 +37,19 @@
 
 
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <form>
-                    <p>Item Name</p>
-                    <input class="form-control" type="text" id="party-item" placeholder="Item to Bring" required/>
-                    <br>
-                    <p>Description</p>
-                    <textarea class="form-control" rows="2" id="item-descrip"
-                        placeholder="Brief description of item!"></textarea>
+           <div class="col-sm-8 col-sm-offset-2">
+               <form>
+                   <p>Item Name</p>
+                   <input class="form-control" type="text" id="party-item" placeholder="Item to Bring" required/>
+                   <br>
+                   <p>Description</p>
+                   <textarea class="form-control" rows="2" id="item-descrip"
+                       placeholder="Brief description of item!"></textarea>
+                   <br>
+                   <button id="item-submit" type="submit" class="btn btn-lg pull-right">Submit!</button>
+               </form>
+           </div>
+       </div>
                     <br>
                     <button id="item-submit" type="submit" class="btn btn-lg pull-right">Submit!</button>
                 </form>
@@ -55,7 +60,8 @@
         <br>
 
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-3"></div>
+            <div class="col-sm-6">
                 <h3>Items</h3>
                 <br>
                 <div id="item-area"></div>
