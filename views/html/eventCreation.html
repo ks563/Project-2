@@ -21,7 +21,7 @@
 </head>
 
 <body class="bg">
-  <div class="container creation-container">
+  <div class="container creation-container"> 
 
       <nav class="navbar navbar-expand-lg">
         <a href="/logout" class="btn btn-primary btn-logout ml-auto" id="logout" style="float: right;" type="button">Log Out</a>
@@ -54,7 +54,9 @@
               </div>
               <div class="form-group">
                 <label for="party-email">Phone Number</label>
-                <input name=phoneNumber type="text" class="form-control" id="party-email" required>
+                <input type="tel"  name="phoneNumber"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+               class="form-control" id="party-email" required>
               </div>
               <button id="event-submit" type="submit" class="btn btn-primary submit">Submit</button>
             </form>
