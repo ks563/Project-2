@@ -24,12 +24,12 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-    <!-- Zingtouch.js -->
-    <!-- <script src='./path/to/zingtouch.min.js'></script> -->
+    {{!-- Animate CSS --}}
+    <link rel="stylesheet" href="animate.min.css">
 
 </head>
 
-<body>
+<body syle="overflow: hidden">
     <div class="container creation-container">
 
         <div class="jumbotron bg-jumbo">
@@ -37,54 +37,52 @@
                 <h2 class="text-center">What are you bringing?</h2>
         </div>
 
-        <div class="row" id="test">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="item card">
-                    <div class="card-header text-center" >
-                        <p id="text">Swipe right on the items you want to bring!</p>
-                    </div>
+        <div class="cotainer" id="test">
+            <div class="card">
+                <div class="card-header text-center">
+                    <p id="text">Swipe right on the items you want to bring!</p>
                 </div>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div id="item-here">
-
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+            <div id="card-test" sytle="dispay: flex; align-items: flex-end; z-index: 1">
+            </div>
             </div>
         </div>
 
     </div>
 
-    <script src="http://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    {{!-- Hammer.js link --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
 
     <script type="text/javascript">
 
-        // for (var i = 0; i < 10; i++) {
-        //     var imgSrc;
-        //     var itemDiv = $("<div>");
-        //     var itemDesc = $("<p>").text();
-        //     var itemImg = $("<img>");
-        //     itemImg.attr("src", imgSrc);
-        // };
-        // itemDiv.prepend(itemImg);
-        // itemDiv.prepend(itemDesc);
-        // $("item-here").prepend(itemDiv);
+    var test = ["1","2","3", "4"];
+    var source = ["https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?cs=srgb&dl=backlit-clouds-dusk-853168.jpg&fm=jpg", "https://images.unsplash.com/photo-1534278931827-8a259344abe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDaIkKmVgWpK8qr0dp6ZFOk-yAbA40Vt_nQMR5j770Kux5GrK3"];
 
-        // $("#test").on("swipeleft", function() {
-        //     console.log("swipe left");
-        // });
+    function insertCard() {
+        for(var i = 0; i < test.length; i++) {
+            var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src='"+source[i]+"'><div class='card-body'><h4 class='card-title'>"+test[i]+"<p class='card-text'>Some text about product</p></h4></div></div>";
 
-        // $("#test").on("swipe", function() {
-        //     console.log("swipe right");
-        // });
-    var $card = document.querySelector(".item");
-    var item = new Hammer($card)
-    item.on("swipeleft",function(){
-        $card.classList.add("animated", "slideOutLeft")
+            $("#card-test").prepend(card);
+        };
+    };
+
+    insertCard();
+
+    var $cards = document.querySelectorAll(".item");
+    $cards.forEach(function(item) {
+            var hammer = new Hammer(item)
+            hammer.on("swipeleft",function(){
+            item.classList.add("animated", "slideOutLeft")
+            })
+            hammer.on("swiperight",function(){
+            item.classList.add("animated", "slideOutRight")
     })
-    item.on("swiperight",function(){
-        $card.classList.add("animated", "slideOutRight")
+
     })
 
 
