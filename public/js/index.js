@@ -85,10 +85,10 @@ var handleFormSubmit = function(event) {
     search: $itemName.val().trim(),
   };
 
-  // if (!(item.search)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
+  if (!(item.search)) {
+    alert("You must enter an example text and description!");
+    return;
+  }
 
   API.customSearch(item.search).then(function(data){
     console.log(data);
