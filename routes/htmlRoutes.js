@@ -5,25 +5,29 @@ var path = require("path");
 module.exports = function(app) {
   // Load index page
   app.get("/home", authorizeUser, function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/html/eventCreation.html"));
+    res.render("eventCreation")
+    // res.sendFile(path.join(__dirname, "../views/html/eventCreation.html"));
 
     console.log(req.user)
   });
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/html/login.html"));
+    res.render("login")
+    // res.sendFile(path.join(__dirname, "../views/html/login.html"));
     
   });
 
   app.get("/logout", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/html/login.html"))
-    console.log("htmlhello");
+    res.render("login")
+    // res.sendFile(path.join(__dirname, "../views/html/login.html"))
   });
 
   app.get("/register", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/html/register.html"));
+    res.render("register")
+    // res.sendFile(path.join(__dirname, "../views/html/register.html"));
   });
   app.get("/swipe", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/html/swipe.html"));
+    res.render("swipe")
+    // res.sendFile(path.join(__dirname, "../views/html/swipe.html"));
   });
   app.get("/event/:id", authorizeUser, function(req, res) {
 
@@ -31,7 +35,8 @@ module.exports = function(app) {
   app.get("/event/create/:id", authorizeUser, function(req, res) {
     var eventId = req.params.id;
     req.body.eventId = eventId;
-    res.sendFile(path.join(__dirname, "../views/html/additems.html"));
+    res.render("addItems", {id: eventId});
+    // res.sendFile(path.join(__dirname, "../views/html/additems.html"));
   });
 
   // Render 404 page for any unmatched routes
