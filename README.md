@@ -36,5 +36,3 @@
 * Frontend: [Diego Montealegre Silva](https://github.com/didachos24)
 * Backend: [Ferat Imrak](https://github.com/jiro1)
 * Backend: [Cuauhtemoc Rodriguez](https://github.com/Cuauhtemoc)
-
-
