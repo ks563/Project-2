@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
     <!--bootstrap and jquery links-->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -25,14 +22,14 @@
         crossorigin="anonymous"></script>
 
     {{!-- Animate CSS --}}
-    <link rel="stylesheet" href="animate.min.css">
+    {{!-- <link rel="stylesheet" href="animate.min.css"> --}}
 
 </head>
 
 <body syle="overflow: hidden">
     <div class="container creation-container">
 
-        <div class="jumbotron bg-jumbo">
+        <div id="event" data-id="{{this.id}}" class="jumbotron bg-jumbo">
             <h1 class="text-center">
                 <h2 class="text-center">What are you bringing?</h2>
         </div>
@@ -68,32 +65,48 @@
 
     {{!-- Hammer.js link --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript">
 
-    var test = ["1","2","3", "4"];
-    var source = ["https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?cs=srgb&dl=backlit-clouds-dusk-853168.jpg&fm=jpg", "https://images.unsplash.com/photo-1534278931827-8a259344abe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDaIkKmVgWpK8qr0dp6ZFOk-yAbA40Vt_nQMR5j770Kux5GrK3"];
-
-    function insertCard() {
-        for(var i = 0; i < test.length; i++) {
-            var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src='"+source[i]+"'><div class='card-body'><h4 class='card-title'>"+test[i]+"<p class='card-text'>Some text about product</p></h4></div></div>";
+    var $eventId = $("#event").attr("data-id");
+    console.log($eventId);
+    function insertCard(data) {
+        console.log(data);
+        for(var i = 0; i < data.length; i++) {
+            var card = "<div data-id="+data[i].id+ " class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src='"+data[i].image_link+"'><div class='card-body'><h4 class='card-title'>"+data[i].item+"<p class='card-text'>" +data[i].description+ "</p></h4></div></div>";
 
             $("#card-test").prepend(card);
-        };
-    };
-
-    insertCard();
-
-    var $cards = document.querySelectorAll(".item");
-    $cards.forEach(function(item) {
+        }
+        
+        var $cards = document.querySelectorAll(".item");
+        $cards.forEach(function(item) {
             var hammer = new Hammer(item)
             hammer.on("swipeleft",function(){
             item.classList.add("animated", "slideOutLeft")
             })
             hammer.on("swiperight",function(){
+            var itemId = $(item).attr("data-id")
+            var data = {
+                id: itemId,
+                isBrought: true
+            }
+            $.ajax({
+                url:"/api/event/item",
+                type:"POST",
+                data: data
+            })
             item.classList.add("animated", "slideOutRight")
     })
+    })
+        
+    };
+    
 
+       $.ajax({
+        url:"/api/event/" + $eventId,
+        type: "GET"
+    }).then(function(data){
+        insertCard(data);
     })
 
 

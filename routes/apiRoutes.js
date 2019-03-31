@@ -85,13 +85,31 @@ module.exports = function(app) {
       }
     })
   });
-       
+  app.post("/api/event/item", function(req, res){
+    db.Item.findByPk(req.body.id).then(function(item){
+      if(item)
+      {
+        item.update({isBrought:req.body.isBrought})
+      }
+    })
+  })
+  app.get("/api/event/:id", function(req,res){
+    console.log("here");
+    event_id = parseInt(req.params.id)
+    db.Item.findAll({where:{EventId:event_id,isBrought:false}})
+    .then( function(items){
+      if(items)
+      {
+        res.json(items);
+      }
+    })
+  });
+
   app.post("/api/login", passport.authenticate('local', {
       successRedirect: "/home",
       failureRedirect: "/login",
     })
   );
-  
   // // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
     
