@@ -2,30 +2,40 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Event Creation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/background.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
-  
-    <!--bootstrap and jquery links-->
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Event Creation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="/styles/background.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
+
+  <!--bootstrap and jquery links-->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
 </head>
 
 <body class="bg">
-  <div class="container creation-container"> 
+  <div class="container creation-container">
+    <div class="content">
+      <div class="content-inside">
+      
 
-      <nav class="navbar navbar-expand-lg">
-        <a href="/logout" class="btn btn-primary btn-logout ml-auto" id="logout" style="float: right;" type="button">Log Out</a>
-      </nav>
+    <nav class="navbar navbar-expand-lg">
+      <a href="/logout" class="btn btn-primary btn-logout ml-auto" id="logout" type="button">Log Out</a>
+    </nav>
 
     <div class="jumbotron">
       <h1 class="text-center">
@@ -54,9 +64,8 @@
               </div>
               <div class="form-group">
                 <label for="party-email">Phone Number</label>
-                <input type="tel"  name="phoneNumber"
-                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-               class="form-control" id="party-email" required>
+                <input type="tel" name="phoneNumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control"
+                  id="party-email" required>
               </div>
               <button id="event-submit" type="submit" class="btn btn-primary submit">Submit</button>
             </form>
@@ -64,26 +73,20 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
 
   </div>
-<!--  
-        <script type="text/javascript">
 
-          $("#event-submit").on("click", function (event) {
-            event.preventDefault();
 
-            var newParty = {
-              partyName: $("#party-name").val().trim(),
-              partyTime: $("#party-time").val().trim(),
-              partyEmail: $("#party-email").val().trim(),
-            };
 
-            console.log(newParty);
-          })
+  <footer class="footer fixed-bottom">
 
-            //need to add jquery once routes are written to pull data from the form on a post - will also clear data on the post
+    <div class="footer text-center py-3">© 2019 The Dip
+    </div>
 
-        </script> -->
+  </footer>
+
 </body>
 
 </html>
