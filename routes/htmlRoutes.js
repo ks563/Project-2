@@ -25,8 +25,8 @@ module.exports = function(app) {
     res.render("register")
     // res.sendFile(path.join(__dirname, "../views/html/register.html"));
   });
-  app.get("/swipe", function(req, res) {
-    res.render("swipe")
+  app.get("/event/swipe/:id", function(req, res) {
+    res.render("swipe",{id:req.params.id})
     // res.sendFile(path.join(__dirname, "../views/html/swipe.html"));
   });
   app.get("/event/:id", authorizeUser, function(req, res) {
