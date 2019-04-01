@@ -1,3 +1,4 @@
+// Event database model that belongs to an specific user. This database is associated with an item database (relation one by one).
 module.exports = function(sequelize, DataTypes) {
     var Event = sequelize.define("Event", {
       dateTime: {

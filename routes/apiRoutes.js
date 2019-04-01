@@ -1,3 +1,4 @@
+// Dependencies
 var db = require("../models");
 var axios = require("axios")
 var passport = require("passport");
@@ -17,6 +18,7 @@ module.exports = function(app) {
     })
   });
 
+  // User logout
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect("login");
@@ -59,6 +61,7 @@ module.exports = function(app) {
     })
   });
 
+  // Create a new user
   app.post("/api/register", function(req,res){
     var hashedPW = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null)
     db.User.findOne({where:{
@@ -86,6 +89,8 @@ module.exports = function(app) {
       }
     })
   });
+
+  // Add item to event list
   app.post("/api/event/item", function(req, res){
     db.Item.findByPk(req.body.id).then(function(item){
       if(item)
@@ -94,6 +99,8 @@ module.exports = function(app) {
       }
     })
   })
+
+  // Route to show event and item added
   app.get("/api/event/:user-:eventname", function(req,res){
     console.log("here");
     console.log(req.params)
