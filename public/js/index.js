@@ -149,6 +149,17 @@ var handleSelection = function(item){
   }
   API.saveSelection(data);
 }
+var showEventLink = function(){
+  var protocol = window.location.protocol;
+  var host = window.location.host;
+  var username = $("#event").data("username");
+  var eventname = $("#event").data("eventname");
+  var url = protocol + "//" + host + "/event/" + username + "-" + eventname;
+  $("#event").attr("href", url);
+  $("#event").text("Event Link: " + url);
+}
+showEventLink();
+
 // Add event listeners to the submit and delete buttons
 $itemSubmitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);

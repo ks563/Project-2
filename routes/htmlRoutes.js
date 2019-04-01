@@ -40,10 +40,16 @@ module.exports = function(app) {
 
   });
   // Route to create a new event
-  app.get("/event/create/:id", authorizeUser, function(req, res) {
+  app.get("/event/create/:id/:username/:eventname", authorizeUser, function(req, res) {
     var eventId = req.params.id;
+    var username = req.params.username;
+    var eventname = req.params.eventname;
     req.body.eventId = eventId;
-    res.render("addItems", {id: eventId});
+    res.render("addItems", {
+      id: eventId,
+      username: username, 
+      eventname: eventname
+    });
     // res.sendFile(path.join(__dirname, "../views/html/additems.html"));
   });
 
