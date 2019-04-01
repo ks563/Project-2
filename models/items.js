@@ -1,3 +1,5 @@
+// Items database model that belongs to an determinated event (relation one by one).
+// Each guest has to pick an item to bring, changing isBrought state to modify database
 module.exports = function(sequelize, DataTypes) {
     var Item = sequelize.define("Item", {
       item: {
