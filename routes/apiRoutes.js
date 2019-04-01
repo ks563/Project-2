@@ -31,6 +31,7 @@ module.exports = function(app) {
      if (user)
      {
        user.createEvent({
+         route: req.body.name.replace(/\s+/g, ''),
          name: req.body.name,
          dateTime: req.body.dateTime,
          phoneNumber: req.body.phoneNumber
@@ -93,17 +94,28 @@ module.exports = function(app) {
       }
     })
   })
-  app.get("/api/event/:id", function(req,res){
+  app.get("/api/event/:user-:eventname", function(req,res){
     console.log("here");
-    event_id = parseInt(req.params.id)
-    db.Item.findAll({where:{EventId:event_id,isBrought:false}})
-    .then( function(items){
-      if(items)
+    console.log(req.params)
+    db.User.findOne({where:{username:req.params.user}}).then(function(user)
+    {
+      if(user)
       {
-        res.json(items);
-      }
-    })
-  });
+        db.Event.findOne({where:{
+          UserId: user.id,
+          route: req.params.eventname
+        }}).then(function(event)
+        {
+          if(event)
+          {
+            db.Item.findAll({where:{EventId:event.id,isBrought:false}})
+        .   then( function(items){
+            if(items)
+            {
+              res.json(items);
+            }
+    })}})}})})  
+  
 
   app.post("/api/login", passport.authenticate('local', {
       successRedirect: "/home",

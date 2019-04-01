@@ -94,15 +94,30 @@ var handleFormSubmit = function(event) {
   API.customSearch(item.search).then(function(data){
     console.log(data);
     $("#item-area").empty();
-    
+
     for (var i = 1; i < data.length; i++)
     {
-      var image = $("<img>");
-      image.addClass("result-image");
-      image.attr("src", data[i].pagemap.cse_thumbnail[0].src);
-      $itemArea.append(image);
+      var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src="+data[i].pagemap.cse_thumbnail[0].src+"></div>";
+
+      // $image.addClass("result-image");
+      // $image.attr("src", data[i].pagemap.cse_thumbnail[0].src);
+      // $itemArea.append(image);
+      $itemArea.prepend(card);
     }
+  
+      var $image = document.querySelectorAll(".item");
+      $image.forEach(function(item) {
+          var hammer = new Hammer(item)
+          hammer.on("swipeleft", function(){
+          item.classList.add("animated", "slideOutLeft")
+          })
+          hammer.on("swiperight", function(){
+            item.classList.add("animated", "slideOutRight")
+            handleSelection(item)
+          })
+        })
   });
+
 
 
   // $exampleText.val("");
@@ -120,8 +135,10 @@ var handleDeleteBtnClick = function() {
     refreshExamples();
   });
 };
-var handleSelection = function(){
-  var imglink = $(this).attr("src");
+var handleSelection = function(item){
+  console.log(item)
+  var imglink = $(item).find("img").attr("src");
+  console.log(imglink)
   var name = $("#party-item").val().trim();
   var description = $("#item-descrip").val().trim();
   var data = {

@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
       name: {
           type: DataTypes.STRING,
           allowNull:false
+        },
+      route: {
+          type: DataTypes.STRING,
+          allowNull:false
         }
     });
     Event.associate = function(models){
