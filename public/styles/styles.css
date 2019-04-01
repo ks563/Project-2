@@ -23,6 +23,10 @@ html, body{
   background-size: cover;
 }
 
+.items-jumbo{
+  height: 50%;
+}
+
 .btn{
   background-color: #969696;
   color: #f2e0c9;
