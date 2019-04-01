@@ -36,7 +36,7 @@ module.exports = function(app) {
          dateTime: req.body.dateTime,
          phoneNumber: req.body.phoneNumber
        }).then(function(event){
-         res.redirect("/event/create/" + event.dataValues.id)
+         res.redirect("/event/create/" + event.dataValues.id+"/" + req.user.username+ "/" + event.dataValues.route)
        })
 
      }
