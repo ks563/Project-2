@@ -29,7 +29,7 @@
 <body syle="overflow: hidden">
     <div class="container creation-container">
 
-        <div id="event" data-id="{{this.id}}" class="jumbotron bg-jumbo">
+        <div id="event" data-user="{{this.user}}" data-eventname="{{this.eventname}}" data-date="{{this.date}}" class="jumbotron bg-jumbo">
             <h1 class="text-center">
                 <h2 class="text-center">What are you bringing?</h2>
         </div>
@@ -68,8 +68,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript">
 
-    var $eventId = $("#event").attr("data-id");
-    console.log($eventId);
+    var $eventUser = $("#event").attr("data-user");
+    var $eventName = $("#event").attr("data-eventname");
     function insertCard(data) {
         console.log(data);
         for(var i = 0; i < data.length; i++) {
@@ -103,7 +103,7 @@
     
 
        $.ajax({
-        url:"/api/event/" + $eventId,
+        url:"/api/event/"+$eventUser+"-"+$eventName,
         type: "GET"
     }).then(function(data){
         insertCard(data);
