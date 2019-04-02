@@ -23,9 +23,9 @@ html, body{
   background-size: cover;
 }
 
-.items-jumbo{
+/* .items-jumbo{
   height: 50%;
-}
+} */
 
 .btn{
   background-color: #969696;
@@ -44,20 +44,4 @@ html, body{
 
 .register-card{
   background-color: #7b7b7b;
-}
-
-html, body {
-  height: 100%;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-content {
-  flex: 1 0 auto;
-}
-
-.footer {
-  flex-shrink: 0;
 }
