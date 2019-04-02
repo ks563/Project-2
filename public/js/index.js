@@ -23,6 +23,7 @@ var API = {
       type: "GET"
     })
   },
+
   customSearch: function(searchTerm){
     return $.ajax({
       url: "/api/search/" + searchTerm,
@@ -57,6 +58,7 @@ var handleFormSubmit = function(event) {
     for (var i = 1; i < data.length; i++)
     {
       var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src="+data[i].pagemap.cse_thumbnail[0].src+"></div>";
+
       $itemArea.prepend(card);
     }
   
@@ -72,6 +74,7 @@ var handleFormSubmit = function(event) {
           })
         })
   });
+
 };
 var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
@@ -149,5 +152,5 @@ showEventLink();
 
 // Add event listeners to the submit and delete buttons
 $itemSubmitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
 $(document).on("click",".result-image", handleSelection);
