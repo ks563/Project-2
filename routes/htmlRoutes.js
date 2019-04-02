@@ -19,6 +19,10 @@ module.exports = function(app) {
     res.render("login")
     
   });
+  app.get("/", function(req, res) {
+    res.render("login")
+    
+  });
   // Creating new user route
   app.get("/register", function(req, res) {
     res.render("register")
