@@ -30,6 +30,7 @@
 
 * Adding geo-location for events.
 * Adding contact information on swipe page.
+* Linking events to social media.
 
 
 ## Authors
