@@ -116,6 +116,7 @@ var showPastEvents = function(){
     {
       
       API.getItems(data[i].id).then(function(results){
+
         var pTag = $("<p>");
         var anchor = $("<a>");
         var btn = $("<button>");
@@ -154,3 +155,13 @@ showEventLink();
 $itemSubmitBtn.on("click", handleFormSubmit);
 
 $(document).on("click",".result-image", handleSelection);
+
+// Clear Item search area
+
+$("#clear").click(function(event) {
+  event.preventDefault();
+
+  $("#party-item").value("");
+  $("#item-descrip").value("");
+  $("#item-area").value('');
+})
