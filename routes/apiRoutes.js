@@ -122,7 +122,17 @@ module.exports = function(app) {
               res.json(items);
             }
     })}})}})})  
-  
+    
+  app.get("/api/events/find", function(req, res){
+    db.Event.findAll({where:{UserId:req.user.id}}).then(function(events){
+      res.send(events);
+    })
+  });
+  app.get("/api/event/find/item/:id", function(req, res){
+    db.Item.findAll({where:{EventId:req.params.id}}).then(function(items){
+      res.send(items);
+    })
+  })
 
   app.post("/api/login", passport.authenticate('local', {
       successRedirect: "/home",

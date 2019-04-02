@@ -11,28 +11,18 @@ var $eventId = $("#event").attr("data-id");
 // The API object contains methods for each kind of request we'll make
 
 var API = {
-  // saveExample: function(data) {
-  //   return $.ajax({
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     type: "POST",
-  //     url: "api/event",
-  //     data: JSON.stringify(data)
-  //   });
-  // },
-  // getExamples: function() {
-  //   return $.ajax({
-  //     url: "api/examples",
-  //     type: "GET"
-  //   });
-  // },
-  // deleteExample: function(id) {
-  //   return $.ajax({
-  //     url: "api/examples/" + id,
-  //     type: "DELETE"
-  //   });
-  // },
+  getEvents: function() {
+    return $.ajax({
+      url: "/api/events/find",
+      type: "GET"
+    });
+  },
+  getItems: function(eventId){
+    return $.ajax({
+      url: "/api/event/find/item/" + eventId,
+      type: "GET"
+    })
+  },
   customSearch: function(searchTerm){
     return $.ajax({
       url: "/api/search/" + searchTerm,
@@ -47,37 +37,6 @@ var API = {
     })
   }
 };
-
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
@@ -98,10 +57,6 @@ var handleFormSubmit = function(event) {
     for (var i = 1; i < data.length; i++)
     {
       var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src="+data[i].pagemap.cse_thumbnail[0].src+"></div>";
-
-      // $image.addClass("result-image");
-      // $image.attr("src", data[i].pagemap.cse_thumbnail[0].src);
-      // $itemArea.append(image);
       $itemArea.prepend(card);
     }
   
@@ -117,15 +72,7 @@ var handleFormSubmit = function(event) {
           })
         })
   });
-
-
-
-  // $exampleText.val("");
-  // $exampleDescription.val("");
 };
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
@@ -158,6 +105,52 @@ var showEventLink = function(){
   $("#event").attr("href", url);
   $("#event").text("Event Link: " + url);
 }
+
+var showPastEvents = function(){
+  API.getEvents().then(function(data){ 
+    var events = data;
+    for(var i = 0; i <events.length; i++)
+    {
+      API.getItems(events[i].id).then(function(results){
+        var pTag = $("<p>");
+        var anchor = $("<a>");
+        var btn = $("<button>");
+        var eventInfo = $("<div>");
+        var eventCollaspe = $("<div>");
+        var table = $("<table>");
+        var rowName= $("<tr>");
+        var rowBought=$("<tr>");
+        // anchor.addClass("btn btn-primary");
+        // anchor.attr("data-toggle", "collapse");
+        // anchor.attr("href", "event"+ data[i].name);
+        console.log(events);
+        btn.val(events[i].name);
+        btn.addClass("btn btn-primary");
+        btn.attr("type", "button");
+        btn.attr("data-toggle", "collapse");
+        btn.attr("data-target", "#eventInfo-"+i);
+        btn.attr("aria-expanded", "false");
+        btn.attr("aria-controls", "eventInfo-"+i);
+        eventInfo.addClass("collapse");
+        eventInfo.attr("id", "eventInfo-"+i);
+        eventCollaspe.addClass("card card-body");
+        pTag.append(btn);
+        table.append("<tr><th>Item Name</th><th>Bought</th></tr>")
+        for(var i = 0; i < results.length; i++)
+        {
+          table.append("<tr><td>" + results.item +"</td><td>" + results.isBrought+"</td></tr>");
+        }
+
+        eventInfo.append(eventCollaspe);
+        eventCollaspe.append(table);
+        $("#past-events").append(pTag);
+        $("#past-event").append(eventInfo);
+      })
+    }
+  })
+}
+
+showPastEvents();
 showEventLink();
 
 // Add event listeners to the submit and delete buttons
