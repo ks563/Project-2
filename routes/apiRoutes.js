@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get("/api/search/:search",authorizeUser, function(req, res) {
     var url = "https://www.googleapis.com/customsearch/v1?key="+ process.env.API_KEY + "&cx=" + process.env.CSE_ID + "&q=" + req.params.search;
     axios.get(url).then(function(results){
-      console.log(results.data.items);
+      //console.log(results.data.items);
       res.json(results.data.items);
     }).catch(function(err){
       console.log(err)
@@ -47,9 +47,9 @@ module.exports = function(app) {
   // Create a new list item
   app.post("/api/event/add", authorizeUser,function(req, res) {
     var eventId = req.body.event_id;
-    console.log(eventId);
+    //console.log(eventId);
     db.Event.findByPk(eventId).then(function(event){
-      console.log(event);
+      //console.log(event);
       if (event)
       {
         event.createItem({
@@ -102,8 +102,8 @@ module.exports = function(app) {
 
   // Route to show event and item added
   app.get("/api/event/:user-:eventname", function(req,res){
-    console.log("here");
-    console.log(req.params)
+    //console.log("here");
+    //console.log(req.params)
     db.User.findOne({where:{username:req.params.user}}).then(function(user)
     {
       if(user)
@@ -129,9 +129,5 @@ module.exports = function(app) {
       failureRedirect: "/login",
     })
   );
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-    
 
-  // });
 };
