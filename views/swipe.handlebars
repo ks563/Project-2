@@ -62,7 +62,7 @@
     var $eventUser = $("#event").attr("data-user");
     var $eventName = $("#event").attr("data-eventname");
     function insertCard(data) {
-        console.log(data);
+        //console.log(data);
         for(var i = 0; i < data.length; i++) {
             var card = "<div data-id="+data[i].id+ " class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src='"+data[i].image_link+"'><div class='card-body'><h4 class='card-title'>"+data[i].item+"<p class='card-text'>" +data[i].description+ "</p></h4></div></div>";
 

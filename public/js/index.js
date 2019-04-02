@@ -11,28 +11,7 @@ var $eventId = $("#event").attr("data-id");
 // The API object contains methods for each kind of request we'll make
 
 var API = {
-  // saveExample: function(data) {
-  //   return $.ajax({
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     type: "POST",
-  //     url: "api/event",
-  //     data: JSON.stringify(data)
-  //   });
-  // },
-  // getExamples: function() {
-  //   return $.ajax({
-  //     url: "api/examples",
-  //     type: "GET"
-  //   });
-  // },
-  // deleteExample: function(id) {
-  //   return $.ajax({
-  //     url: "api/examples/" + id,
-  //     type: "DELETE"
-  //   });
-  // },
+
   customSearch: function(searchTerm){
     return $.ajax({
       url: "/api/search/" + searchTerm,
@@ -99,9 +78,6 @@ var handleFormSubmit = function(event) {
     {
       var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src="+data[i].pagemap.cse_thumbnail[0].src+"></div>";
 
-      // $image.addClass("result-image");
-      // $image.attr("src", data[i].pagemap.cse_thumbnail[0].src);
-      // $itemArea.append(image);
       $itemArea.prepend(card);
     }
   
@@ -118,10 +94,6 @@ var handleFormSubmit = function(event) {
         })
   });
 
-
-
-  // $exampleText.val("");
-  // $exampleDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -162,5 +134,5 @@ showEventLink();
 
 // Add event listeners to the submit and delete buttons
 $itemSubmitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
 $(document).on("click",".result-image", handleSelection);
