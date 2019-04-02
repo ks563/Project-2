@@ -112,42 +112,36 @@ var showEventLink = function(){
 var showPastEvents = function(){
   API.getEvents().then(function(data){ 
     var events = data;
-    for(var i = 0; i <events.length; i++)
+    for(let i = 0; i <data.length; i++)
     {
-      API.getItems(events[i].id).then(function(results){
+      
+      API.getItems(data[i].id).then(function(results){
         var pTag = $("<p>");
         var anchor = $("<a>");
         var btn = $("<button>");
         var eventInfo = $("<div>");
         var eventCollaspe = $("<div>");
         var table = $("<table>");
-        var rowName= $("<tr>");
-        var rowBought=$("<tr>");
-        // anchor.addClass("btn btn-primary");
-        // anchor.attr("data-toggle", "collapse");
-        // anchor.attr("href", "event"+ data[i].name);
-        console.log(events);
-        btn.val(events[i].name);
+        btn.text(data[i].name);
         btn.addClass("btn btn-primary");
         btn.attr("type", "button");
         btn.attr("data-toggle", "collapse");
         btn.attr("data-target", "#eventInfo-"+i);
-        btn.attr("aria-expanded", "false");
+        btn.attr("aria-expanded", false);
         btn.attr("aria-controls", "eventInfo-"+i);
         eventInfo.addClass("collapse");
         eventInfo.attr("id", "eventInfo-"+i);
         eventCollaspe.addClass("card card-body");
         pTag.append(btn);
         table.append("<tr><th>Item Name</th><th>Bought</th></tr>")
-        for(var i = 0; i < results.length; i++)
+        for(let j = 0; j < results.length; j++)
         {
-          table.append("<tr><td>" + results.item +"</td><td>" + results.isBrought+"</td></tr>");
+          table.append("<tr><td>" + results[j].item +"</td><td>" + results[j].isBrought+"</td></tr>");
         }
-
         eventInfo.append(eventCollaspe);
         eventCollaspe.append(table);
         $("#past-events").append(pTag);
-        $("#past-event").append(eventInfo);
+        $("#past-events").append(eventInfo);
       })
     }
   })
