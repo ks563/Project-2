@@ -55,11 +55,13 @@ var handleFormSubmit = function(event) {
     console.log(data);
     $("#item-area").empty();
 
-    for (var i = 1; i < data.length; i++)
+    for (let i = 0; i < data.length; i++)
     {
-      var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src="+data[i].pagemap.cse_thumbnail[0].src+"></div>";
-
-      $itemArea.prepend(card);
+      if(data[i].pagemap.cse_image)
+      {
+        var card = "<div class='card item' style='width: 18rem; transform: translateY(20*"+i+"px); display: inline-block; overflow: hidden; position: absolute'><img class='card-img-top' src="+data[i].pagemap.cse_image[0].src+"></div>";
+      } 
+      $itemArea.append(card);
     }
   
       var $image = document.querySelectorAll(".item");
@@ -117,13 +119,13 @@ var showPastEvents = function(){
       
       API.getItems(data[i].id).then(function(results){
         var pTag = $("<p>");
-        var anchor = $("<a>");
         var btn = $("<button>");
         var eventInfo = $("<div>");
         var eventCollaspe = $("<div>");
         var table = $("<table>");
+        pTag.addClass("btn-group")
         btn.text(data[i].name);
-        btn.addClass("btn btn-primary");
+        btn.addClass("m-2 btn btn-primary");
         btn.attr("type", "button");
         btn.attr("data-toggle", "collapse");
         btn.attr("data-target", "#eventInfo-"+i);
