@@ -29,9 +29,10 @@ Who's Bringing the Dip? is a mobile-first app that allows hosts to organize who'
 
 ## Future Directions
 
+* Improving UI/UX design so use is more intuitive.
+* Improving on swipe functionality so that once an item is selected images are no longer shown.
 * Adding geo-location for events.
-* Adding contact information on swipe page.
-* Linking events to social media.
+* Linking events to host's social media accounts.
 
 
 ## Authors
