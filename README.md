@@ -1,25 +1,26 @@
 # Who's Bringing the Dip? 
 
-* If you’ve ever hosted or attended a dinner party/holiday dinner/potluck you know the struggle of coordinating the bringing of items.
-* Who’s Bringing the Dip creates a space for hosts to coordinate what needs to be brought to an event. 
-* The app originated as an idea to swipe through the products already listed on app.
-* If the guests swipe right then they want to bring this item. 
-* If swipe left then they do not want to bring this item.
+Who's Bringing the Dip? is a mobile-first app that allows hosts to organize who's bringing what to parties. Have you ever hosted a party and tried to organize what your guests should bring? Have you ever been invited to a party and hadn't known what to bring?  To use the app, hosts create an account and start creating events! By utilizing database storage and express servers, hosts create lists of items that can be brought to parties. Photos are added to the items through the Google Custom Search API and the host can swipe through them using the Hammer.js library. Swiping right on the photo adds it to the database, while swiping left discards it. Ho Guests access these lists through a unique event link and swipe right on items they want to bring, and left on items they don't want to bring. 
 
 ## Deployment
 
 * Click [here](http://thedip.herokuapp.com/login) to start interacting with the app right away.
 
-## Built With 
+## Technicalities 
 
+* Passport, bCrypt
+    * NPM packages used to create authenticated logins and encrypted passwords
+* Google API - Custom Search
+    * Used to search for images related to each item added to the database.
+* Hammer.js, Animate.css
+    * Used to create swiping functionality on images.
+* SQL, MySQL, Sequelize 
+    * Used to store data and create methods to transfer data from the client to the database
+* JavaScript
 * HTML
 * CSS, BootStrap
-* JavaScript
-* SQL, MySQL, Sequelize 
+    * The Bootstrap grid used to make the layout responsive and simple.
 * Node.js, Express, Handlebars
-* Passport, bCrypt
-* Hammer.js, Animate.css
-* Google API - Custom Search
 
 
 ## APIs Used
